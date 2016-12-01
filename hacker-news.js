@@ -27,7 +27,6 @@ function HackerNews($http) {
     this.getStory = function (storyId) {
         return $http.get("https://hacker-news.firebaseio.com/v0/item/" + storyId + ".json")
                 .success(function (story) {
-                    console.log(story);
                     var storyObj = me.stories.filter(function (st) {
                         return st.id == storyId;
                     })[0];
@@ -35,6 +34,9 @@ function HackerNews($http) {
                         for (var key in story) {
                             storyObj[key] = story[key];
                         }
+                        storyObj.datetime = (new Date((new Date()).subtract((new Date(storyObj.time)).subtract(new Date("01/01/1970")))))
+                        storyObj.timeAgo = storyObj.datetime.toLongDate();
+                        console.log(storyObj);
                     }
                 })
                 .error(function (err, obj) {

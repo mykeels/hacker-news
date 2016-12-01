@@ -7,14 +7,20 @@
 <body ng-app="HackerNewsApp">
 
     <div ng-controller="ListingCtrl" lazy-load>
-        <div ng-repeat="story in news.getValidStories()">
-            <h4><a ng-href="{{story.url}}" target="_blank">{{story.title}}</a></h4>
+        <div ng-repeat="story in news.getValidStories()" ng-if="story.time">
+            <h4><a href="{{story.url}}" target="_blank">{{story.title}}</a> <small>({{story.timeAgo}}, {{story.datetime.toTime(12)}})</small></h4>
             <p><i>- {{story.by}}</i></p>
+        </div>
+        <div ng-if="news.limit < news.stories.length - 1">
+            <center>
+                <img src="google-loading-icon.gif" style="width:70px;height:70px;" />
+            </center>
         </div>
     </div>
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <script src="hacker-news.js"></script>
+    <script src="date.prototype.js"></script>
     
 </body>
 

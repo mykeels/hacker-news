@@ -6,12 +6,13 @@
 
 <body ng-app="HackerNewsApp">
 
-    <div ng-controller="ListingCtrl">
+    <div ng-controller="ListingCtrl" lazy-load>
         <div ng-repeat="story in news.getValidStories()">
-            <h4>{{story.title}}</h4>
+            <h4><a ng-href="{{story.url}}" target="_blank">{{story.title}}</a></h4>
+            <p><i>- {{story.by}}</i></p>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+    <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <script src="hacker-news.js"></script>
     

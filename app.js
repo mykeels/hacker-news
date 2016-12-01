@@ -6,7 +6,7 @@ app.controller("ListingCtrl", function ($scope, $http) {
 });
 
 app.directive("lazyLoad", function ($window) {
-    return {
+    return { 
         restrict: 'A',
         link: function ($scope, element, attrs) {
             var $w = angular.element($window);

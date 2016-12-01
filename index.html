@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title>Hacker News | Lazy Loading</title>
+</head>
+
+<body ng-app="HackerNewsApp">
+
+    <div ng-controller="ListingCtrl">
+        <div ng-repeat="story in news.getValidStories()">
+            <h4>{{story.title}}</h4>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="hacker-news.js"></script>
+    
+</body>
+
+</html>
